@@ -8,20 +8,23 @@ voronoi_polygon(data, x = "x", y = "y", outline = NULL,
   data.frame = FALSE)
 }
 \arguments{
-\item{x}{numeric vector (for example longitude)}
+\item{data}{data.frame containing a set of points to make voronoi regions and any additional desired columns.}
 
-\item{y}{numeric vector (for example latitude)}
+\item{x}{numeric vector (for example longitude).}
 
-\item{outline}{data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces}
+\item{y}{numeric vector (for example latitude).}
+
+\item{outline}{data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.}
 
 \item{data.frame}{output as data.frame? You will lose information if you do this. For use in StatVoronoi.}
 }
 \description{
-Create a Voronoi diagram for analysis or plotting with geom_polygon
+Create a Voronoi diagram for analysis or plotting with geom_polygon.
 }
 \examples{
-ggplot()+voronoi_polygon(data=points,x="x",y="y",outline=circle)
-voronoi_polygon()
+vor_spdf = voronoi_polygon(data=points,x="x",y="y",outline=circle)
+vor_df = fortify_voronoi(vor_spdf)
+ggplot(vor_df)+geom_polygon(aes(x=x,y=y,fill=fill,group=group))
 }
 \keyword{choropleth}
 \keyword{voronoi,}
