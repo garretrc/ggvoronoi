@@ -3,7 +3,7 @@ Title: Easy Voronoi Choropleth Maps in ggplot2
 Version: 0.8.0
 Authors@R: c(person("Robert", "Garrett", email = "garretrc@miamioh.edu", role = c("aut", "cre")),
            person("Austin", "Nar", email = "narar@miamioh.edu", role = c("aut")))
-Description: Easy creation and manipulation of Voronoi diagrams with visualization in ggplot2
+Description: Easy creation and manipulation of Voronoi diagrams with visualization in ggplot2.
 Imports: ggplot2, deldir, sp, rgeos, raster
 License: MIT + file LICENSE
 Encoding: UTF-8
