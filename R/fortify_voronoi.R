@@ -19,7 +19,7 @@ fortify_voronoi = function(vor_spdf){
   
   voronoi = suppressMessages(ggplot2::fortify(vor_spdf, data)) 
   
-  voronoi = left_join(voronoi,data,by="id")
+  voronoi = merge(voronoi,data,by="id",all.x=TRUE)
   
   voronoi$x=voronoi$long
   voronoi$y=voronoi$lat
