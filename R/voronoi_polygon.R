@@ -25,7 +25,7 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
   y = data[,y]
   if(!is.null(outline)){
     if(class(outline)=="SpatialPolygons"){
-      outline = SpatialPolygonsDataFrame(outline,data.frame(rep(NA,length(hull))))
+      outline = SpatialPolygonsDataFrame(outline,data.frame(rep(NA,length(outline))))
     }
     if(class(outline) != "data.frame" & class(outline) != "SpatialPolygonsDataFrame"){
       outline = NULL
