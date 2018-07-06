@@ -24,10 +24,10 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
   x = data[,x]
   y = data[,y]
   if(!is.null(outline)){
-    if(class(outline)=="SpatialPolygons"){
-      outline = SpatialPolygonsDataFrame(outline,data.frame(rep(NA,length(outline))))
-    }
-    if(class(outline) != "data.frame" & class(outline) != "SpatialPolygonsDataFrame"){
+    #if(class(outline)=="SpatialPolygons"){
+    #  outline = SpatialPolygonsDataFrame(outline,data.frame(rep(NA,length(outline))))
+    #}
+    if(class(outline) != "data.frame" & class(outline) != "SpatialPolygonsDataFrame" & class(outline) != "SpatialPolygons"){
       outline = NULL
       warning("Outline must be of class data.frame or SpatialPolygonsDataFrame. No outline will be used.")
     }
@@ -46,7 +46,7 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
       outline_spdf = SpatialPolygonsDataFrame(SpatialPolygons(outline_polygons), 
                                               data = data.frame(group = unique(outline$group),
                                                                 row.names = unique(outline$group)))
-    }else if(class(outline) == "SpatialPolygonsDataFrame"){
+    }else if(class(outline) == "SpatialPolygonsDataFrame" | class(outline)=="SpatialPolygons"){
       outline_spdf = outline
     }
   }
