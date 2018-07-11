@@ -6,7 +6,7 @@
 #' @keywords voronoi, choropleth
 #' @import ggplot2 sp deldir rgeos raster
 #' @export
-#' @examples ggplot(points)+geom_voronoi(aes(x=x,y=y,fill=fill)))
+#' @examples ggplot(points)+geom_voronoi(aes(x=x,y=y,fill=fill))
 
 geom_voronoi = function (mapping = NULL, data = NULL, stat = StatVoronoi, position = "identity", 
                          ...,na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, outline = NULL) 
