@@ -4,7 +4,7 @@
 \name{points}
 \alias{points}
 \title{Random Points.}
-\format{A data frame with 100 rows and 3 variables:
+\format{A data frame with 200 rows and 3 variables:
 \describe{
   \item{x}{random integer between 1 and 100}
   \item{y}{random integer between 1 and 100}
