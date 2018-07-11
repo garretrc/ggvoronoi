@@ -7,7 +7,7 @@
 #' @param outline data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.
 #' @param data.frame output as data.frame? You will lose information if you do this. For use in StatVoronoi.
 #' @keywords voronoi, choropleth
-#' @import ggplot2 sp deldir rgeos raster
+#' @import ggplot2 sp deldir rgeos raster methods
 #' @export
 #' @examples 
 #' vor_spdf = voronoi_polygon(data=points,x="x",y="y",outline=circle)
