@@ -1,0 +1,59 @@
+---
+title: "Voronoi Diagrams with ggvoronoi"
+author: "Robert Garrett"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Voronoi Diagrams with ggvoronoi}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(ggvoronoi)
+library(tidyverse)
+```
+
+
+With ggvoronoi we can easily draw Voronoi diagram heatmaps. 
+A Voronoi diagram draws the nearest neighbor regions around a set of points, and by specifying a fill argument we can turn that into a heatmap!
+Applications of voronoi diagrams include:
+
+- finding the one nearest neighbor to a given point
+- interpolating a set of points without using a raster
+- creating useful and appealing graphics
+
+## Example 1: Voronoi Diagram Simulation
+
+Let's inspect the points dataset inluded in ggvoronoi.
+
+```{r 1a}
+library(ggvoronoi)
+library(tidyverse)
+
+ggplot(points)+
+  geom_point(aes(x,y,color=fill))
+```
+
+All this data has is a set of x and y coordinates, along with "fill", a distance calculation that we will use to color the voronoi diagram.
+
+ggvoronoi can use this set of points to quickly plot a Voronoi diagram, working with the ggplot2 framework:
+
+```{r 1b}
+ggplot(points)+
+  geom_voronoi(aes(x,y,fill=fill))
+```
+
+Additionally, we can use the stat_voronoi function directly to specify which ggplot 2 geom we would like to use.
+This is most useful when we are interested in plotting only the borders of the diagram:
+
+```{r 1c}
+ggplot(points,aes(x,y))+
+  stat_voronoi(geom="path")+
+  geom_point()
+```
+
