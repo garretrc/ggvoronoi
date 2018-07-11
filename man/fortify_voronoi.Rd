@@ -14,7 +14,10 @@ Use this before attempting to plot with geom_polygon
 }
 \examples{
 fortify_voronoi(vor_spdf)
-fortify_voronoi()
+vor_spdf = voronoi_polygon(data=points,x="x",y="y",outline=circle)
+vor_df = fortify_voronoi(vor_spdf)
+ggplot(vor_df)+geom_polygon(aes(x=x,y=y,fill=fill,group=group))
+
 }
 \keyword{choropleth}
 \keyword{voronoi,}

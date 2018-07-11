@@ -57,7 +57,7 @@ the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
 Convenience function for use with stat_voronoi
 }
 \examples{
-ggplot(points)+geom_voronoi(aes(x=x,y=y,fill=fill)))
+ggplot(points)+geom_voronoi(aes(x=x,y=y,fill=fill))
 }
 \keyword{choropleth}
 \keyword{voronoi,}

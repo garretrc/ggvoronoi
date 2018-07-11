@@ -58,7 +58,7 @@ to the paired geom/stat.}
 Use geom="polygon" for choropleth or geom="path" for region borders
 }
 \examples{
-ggplot(points)+stat_voronoi(aes(x=x,y=y,fill=fill)))
+ggplot(points)+stat_voronoi(aes(x=x,y=y,fill=fill))
 }
 \keyword{choropleth}
 \keyword{datasets}

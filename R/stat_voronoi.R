@@ -3,10 +3,11 @@
 #' Use geom="polygon" for choropleth or geom="path" for region borders
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
+#' @param outline data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.
 #' @keywords voronoi, choropleth
 #' @import ggplot2 sp deldir rgeos raster
 #' @export
-#' @examples ggplot(points)+stat_voronoi(aes(x=x,y=y,fill=fill)))
+#' @examples ggplot(points)+stat_voronoi(aes(x=x,y=y,fill=fill))
 
 stat_voronoi <-
   function(mapping = NULL,
@@ -39,7 +40,7 @@ StatVoronoi <- ggproto(
   "StatVoronoi",
   Stat,
   required_aes = c("x", "y"),
-  
+
   compute_group = function(data, scales, outline = NULL) {
     voronoi_polygon(
       data,
