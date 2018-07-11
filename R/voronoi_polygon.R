@@ -24,7 +24,7 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
     stop('"data" must be of class data.frame')
   }
   if(sum(duplicated(data[,c(x,y)]))>0){
-    stop('"data" must nto contain duplicate (x,y) points')
+    stop('"data" must not contain duplicate (x,y) points')
   }
   xname = x
   yname = y
