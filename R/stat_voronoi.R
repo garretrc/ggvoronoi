@@ -7,7 +7,10 @@
 #' @keywords voronoi, choropleth
 #' @import ggplot2 sp deldir rgeos raster
 #' @export
-#' @examples ggplot(points)+stat_voronoi(aes(x=x,y=y,fill=fill))
+#' @examples
+#' library(ggplot2)
+#' ggplot(points)+
+#'     stat_voronoi(aes(x=x,y=y,fill=fill))
 
 stat_voronoi <-
   function(mapping = NULL,

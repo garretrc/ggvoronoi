@@ -52,12 +52,16 @@ display.}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
+
+\item{outline}{data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.}
 }
 \description{
 Convenience function for use with stat_voronoi
 }
 \examples{
-ggplot(points)+geom_voronoi(aes(x=x,y=y,fill=fill))
+library(ggplot2)
+ggplot(points)+
+    geom_voronoi(aes(x=x,y=y,fill=fill))
 }
 \keyword{choropleth}
 \keyword{voronoi,}

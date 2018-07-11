@@ -49,6 +49,8 @@ rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
 
+\item{outline}{data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.}
+
 \item{...}{Other arguments passed on to \code{\link[=layer]{layer()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
 \code{color = "red"} or \code{size = 3}. They may also be parameters
@@ -58,7 +60,9 @@ to the paired geom/stat.}
 Use geom="polygon" for choropleth or geom="path" for region borders
 }
 \examples{
-ggplot(points)+stat_voronoi(aes(x=x,y=y,fill=fill))
+library(ggplot2)
+ggplot(points)+
+    stat_voronoi(aes(x=x,y=y,fill=fill))
 }
 \keyword{choropleth}
 \keyword{datasets}

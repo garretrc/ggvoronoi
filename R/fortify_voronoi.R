@@ -8,6 +8,8 @@
 #' @examples
 #' vor_spdf = voronoi_polygon(data=points,x="x",y="y",outline=circle)
 #' vor_df = fortify_voronoi(vor_spdf)
+#'
+#' library(ggplot2)
 #' ggplot(vor_df)+geom_polygon(aes(x=x,y=y,fill=fill,group=group))
 
 fortify_voronoi = function(vor_spdf){
