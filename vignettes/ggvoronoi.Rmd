@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(ggvoronoi)
-library(tidyverse)
+library(ggplot2)
 ```
 
 
@@ -27,13 +27,13 @@ Applications of voronoi diagrams include:
 - interpolating a set of points without using a raster
 - creating useful and appealing graphics
 
-## Example 1: Voronoi Diagram Simulation
+## Voronoi Diagram Simulation
 
 Let's inspect the points dataset inluded in ggvoronoi.
 
 ```{r 1a}
 library(ggvoronoi)
-library(tidyverse)
+library(ggplot2)
 
 ggplot(points)+
   geom_point(aes(x,y,color=fill))
