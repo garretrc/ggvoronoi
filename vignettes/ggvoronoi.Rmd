@@ -19,7 +19,7 @@ library(tidyverse)
 ```
 
 
-With ggvoronoi we can easily draw Voronoi diagram heatmaps. 
+With ggvoronoi we can easily draw Voronoi diagram heatmaps, with help from packages deldir and ggplot2. 
 A Voronoi diagram draws the nearest neighbor regions around a set of points, and by specifying a fill argument we can turn that into a heatmap!
 Applications of voronoi diagrams include:
 
@@ -57,3 +57,29 @@ ggplot(points,aes(x,y))+
   geom_point()
 ```
 
+This last plot brings up and interesting point: the deldir package creates the  voronoi diagram with an automatic bounding box (otherwise it would be infinitely large!). But, we can specify our own bounding box to shrink or enlarge the area.
+
+The outline argument must have these parameters:
+
+- first column is x/longitude
+- second column is y/latitude
+- optional column "group"
+
+Or you can feed it any SpatialPolygonsDataFrame!
+
+For this example, we will use the circle included with ggvoronoi.
+
+```{r 1d}
+ggplot(data=points, aes(x=x, y=y, fill=fill)) + 
+  geom_voronoi(outline = circle)
+```
+
+Finally, you can add whatever you want with your knowledge of ggplot2!
+
+```{r 1e}
+ggplot(points,aes(x,y))+
+  geom_voronoi(aes(fill=fill),outline=circle,color="#4dffb8",size=.125)+
+  scale_fill_gradient(low="#4dffb8",high="black",guide=F)+
+  theme_void()+
+  coord_fixed()
+```
