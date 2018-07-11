@@ -8,6 +8,7 @@
 #' @param data.frame output as data.frame? You will lose information if you do this. For use in StatVoronoi.
 #' @keywords voronoi, choropleth
 #' @import ggplot2 sp deldir rgeos raster
+#' @importFrom methods slot
 #' @export
 #' @examples 
 #' vor_spdf = voronoi_polygon(data=points,x="x",y="y",outline=circle)
