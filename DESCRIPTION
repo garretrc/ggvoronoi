@@ -1,9 +1,13 @@
 Package: ggvoronoi
-Title: Easy Voronoi Choropleth Maps in ggplot2
 Version: 0.8.0
+Date: 2018-07-11
+Title: Voronoi Diagrams and Heatmaps with 'ggplot2'
+Author: Robert Garrett [aut, cre], 
+        Austin Nar [aut]
+Maintainer: Robert Garrett <garretrc@miamioh.edu>
 Authors@R: c(person("Robert", "Garrett", email = "garretrc@miamioh.edu", role = c("aut", "cre")),
            person("Austin", "Nar", email = "narar@miamioh.edu", role = c("aut")))
-Description: Easy creation and manipulation of Voronoi diagrams with visualization in ggplot2.
+Description: Easy creation and manipulation of Voronoi diagrams using 'deldir' with visualization in 'ggplot2'.
 Depends: R (>= 2.10)
 Imports: ggplot2, deldir, sp, rgeos, raster, methods
 License: MIT + file LICENSE
@@ -13,3 +17,4 @@ RoxygenNote: 6.0.1.9000
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/garretrc/ggvoronoi/

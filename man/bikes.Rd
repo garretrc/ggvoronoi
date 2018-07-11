@@ -11,7 +11,7 @@
   \item{name}{location name, if recorded}
 }}
 \source{
-Miami University
+Madeline Maurer, Justin Hopkins, Dr. Helaine Alessio, Amanda Meiering
 }
 \usage{
 bikes

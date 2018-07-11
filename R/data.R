@@ -8,7 +8,7 @@
 #'   \item{y}{latitude coordinate}
 #'   \item{name}{location name, if recorded}
 #' }
-#' @source Miami University
+#' @source Madeline Maurer, Justin Hopkins, Dr. Helaine Alessio, Amanda Meiering
 "bikes"
 
 #' Random Points.
