@@ -34,7 +34,6 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
     else if(class(outline) == "data.frame"){
       if(!is.numeric(outline[,1]) | !is.numeric(outline[,2])){
         warning("Columns 1 and 2 of Outline must be numeric. No outline will be used.")
-        break
       }
       if(is.null(outline$group)){
         outline$group = rep(1, nrow(outline))
