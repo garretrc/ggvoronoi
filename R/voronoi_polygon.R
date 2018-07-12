@@ -21,24 +21,27 @@
 voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FALSE)
 {
   if(class(data) != "data.frame"){
-    stop('"data" must be of class data.frame')
+    stop('"data" must be of class data.frame.')
+  }
+  if(nrow(data)==0){
+    stop('"data" must not be empty.')
   }
   if(sum(duplicated(data[,c(x,y)]))>0){
-    stop('"data" must not contain duplicate (x,y) points')
+    stop('"data" must not contain duplicate (x,y) points.')
   }
   xname = x
   yname = y
   x = data[,x]
   y = data[,y]
   if(!is.null(outline)){
-    #if(class(outline)=="SpatialPolygons"){
-    #  outline = SpatialPolygonsDataFrame(outline,data.frame(rep(NA,length(outline))))
-    #}
     if(class(outline) != "data.frame" & class(outline) != "SpatialPolygonsDataFrame" & class(outline) != "SpatialPolygons"){
       outline = NULL
       warning("Outline must be of class data.frame or SpatialPolygonsDataFrame. No outline will be used.")
     }
     else if(class(outline) == "data.frame"){
+      if(nrow(outline)==0){
+        stop('"outline" must not be empty.') 
+      }
       if(!is.numeric(outline[,1]) | !is.numeric(outline[,2])){
         warning("Columns 1 and 2 of Outline must be numeric. No outline will be used.")
       }
