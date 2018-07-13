@@ -14,8 +14,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(ggvoronoi)
-library(ggplot2)
 ```
 
 
@@ -29,23 +27,31 @@ Applications of voronoi diagrams include:
 
 ## Voronoi Diagram Simulation
 
-Let's inspect the points dataset inluded in ggvoronoi.
+Let's create some data to use as an example.
 
 ```{r 1a}
 library(ggvoronoi)
-library(ggplot2)
+set.seed(45056)
+x = sample(1:200,100)
+y = sample(1:200,100)
+points = data.frame(x, y,
+                    distance = sqrt((x-100)^2 + (y-100)^2))
+circle = data.frame(x = 100*(1+cos(seq(0, 2*pi, length.out = 2500))),
+                    y = 100*(1+sin(seq(0, 2*pi, length.out = 2500))),
+                    group = rep(1,2500))
 
 ggplot(points)+
-  geom_point(aes(x,y,color=fill))
+  geom_point(aes(x,y,color=distance))+
+  geom_path(data=circle,aes(x,y,group=group))
 ```
 
-All this data has is a set of x and y coordinates, along with "fill", a distance calculation that we will use to color the voronoi diagram.
+All this data has is a set of x and y coordinates, along with the euclidean distance from the center of the circle which we will use to color the voronoi diagram.
 
 ggvoronoi can use this set of points to quickly plot a Voronoi diagram, working with the ggplot2 framework:
 
 ```{r 1b}
 ggplot(points)+
-  geom_voronoi(aes(x,y,fill=fill))
+  geom_voronoi(aes(x,y,fill=distance))
 ```
 
 Additionally, we can use the stat_voronoi function directly to specify which ggplot 2 geom we would like to use.
@@ -70,7 +76,7 @@ Or you can feed it any SpatialPolygonsDataFrame!
 For this example, we will use the circle included with ggvoronoi.
 
 ```{r 1d}
-ggplot(data=points, aes(x=x, y=y, fill=fill)) + 
+ggplot(data=points, aes(x=x, y=y, fill=distance)) + 
   geom_voronoi(outline = circle)
 ```
 
@@ -78,7 +84,7 @@ Finally, you can add whatever you want with your knowledge of ggplot2!
 
 ```{r 1e}
 ggplot(points,aes(x,y))+
-  geom_voronoi(aes(fill=fill),outline=circle,color="#4dffb8",size=.125)+
+  geom_voronoi(aes(fill=distance),outline=circle,color="#4dffb8",size=.125)+
   scale_fill_gradient(low="#4dffb8",high="black",guide=F)+
   theme_void()+
   coord_fixed()

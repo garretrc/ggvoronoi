@@ -11,12 +11,20 @@
 #' @importFrom methods slot
 #' @export
 #' @examples
+#' set.seed(45056)
+#' x = sample(1:200,100)
+#' y = sample(1:200,100)
+#' points = data.frame(x, y,
+#'                     distance = sqrt((x-100)^2 + (y-100)^2))
+#' circle = data.frame(x = 100*(1+cos(seq(0, 2*pi, length.out = 2500))),
+#'                     y = 100*(1+sin(seq(0, 2*pi, length.out = 2500))),
+#'                     group = rep(1,2500))
+#'
 #' vor_spdf = voronoi_polygon(data=points,x="x",y="y",outline=circle)
 #' vor_df = fortify_voronoi(vor_spdf)
 #'
-#' library(ggplot2)
 #' ggplot(vor_df)+
-#'     geom_polygon(aes(x=x,y=y,fill=fill,group=group))
+#'     geom_polygon(aes(x=x,y=y,fill=distance,group=group))
 
 voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FALSE)
 {
@@ -40,7 +48,7 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
     }
     else if(class(outline) == "data.frame"){
       if(nrow(outline)==0){
-        stop('"outline" must not be empty.') 
+        stop('"outline" must not be empty.')
       }
       if(!is.numeric(outline[,1]) | !is.numeric(outline[,2])){
         warning("Columns 1 and 2 of Outline must be numeric. No outline will be used.")

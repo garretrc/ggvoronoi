@@ -8,8 +8,8 @@ Maintainer: Robert Garrett <garretrc@miamioh.edu>
 Authors@R: c(person("Robert", "Garrett", email = "garretrc@miamioh.edu", role = c("aut", "cre")),
            person("Austin", "Nar", email = "narar@miamioh.edu", role = c("aut")))
 Description: Easy creation and manipulation of Voronoi diagrams using 'deldir' with visualization in 'ggplot2'.
-Depends: R (>= 2.10)
-Imports: ggplot2, deldir, sp, rgeos, raster, methods
+Depends: R (>= 2.10), ggplot2 (>= 2.2.0)
+Imports: deldir, sp, rgeos, raster, methods
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

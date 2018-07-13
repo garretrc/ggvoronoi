@@ -56,12 +56,29 @@ the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
 \item{outline}{data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.}
 }
 \description{
-Convenience function for use with stat_voronoi
+Convenience function for use with stat_voronoi.
+Uses geom_polygon as the default geom and stat_voronoi as the default stat.
+To plot region borders instead of a choropleth map, use stat_voronoi() with geom="path",
+or use fill=NA with color="black".
 }
 \examples{
-library(ggplot2)
+set.seed(45056)
+x = sample(1:200,100)
+y = sample(1:200,100)
+points = data.frame(x, y,
+                    distance = sqrt((x-100)^2 + (y-100)^2))
+circle = data.frame(x = 100*(1+cos(seq(0, 2*pi, length.out = 2500))),
+                    y = 100*(1+sin(seq(0, 2*pi, length.out = 2500))),
+                    group = rep(1,2500))
+
 ggplot(points)+
-    geom_voronoi(aes(x=x,y=y,fill=fill))
+    geom_voronoi(aes(x=x,y=y,fill=distance))
+
+ggplot(points)+
+    geom_voronoi(aes(x=x,y=y,fill=distance),outline=circle)
+
+ggplot(points)+
+    geom_voronoi(aes(x=x,y=y,fill=distance),fill=NA,color="black")
 }
 \keyword{choropleth}
 \keyword{voronoi,}
