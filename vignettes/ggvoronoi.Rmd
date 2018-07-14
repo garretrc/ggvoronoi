@@ -1,6 +1,6 @@
 ---
 title: "Voronoi Diagrams with ggvoronoi"
-author: "Robert Garrett"
+author: "Robert Garrett and Thomas Fisher"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -33,16 +33,16 @@ Let's create some data to use as an example.
 ```{r 1a}
 library(ggvoronoi)
 set.seed(45056)
-x = sample(1:200,100)
-y = sample(1:200,100)
-points = data.frame(x, y,
-                    distance = sqrt((x-100)^2 + (y-100)^2))
-circle = data.frame(x = 100*(1+cos(seq(0, 2*pi, length.out = 2500))),
-                    y = 100*(1+sin(seq(0, 2*pi, length.out = 2500))),
-                    group = rep(1,2500))
+x <- sample(1:200,100)
+y <- sample(1:200,100)
+points <- data.frame(x, y,
+                     distance = sqrt((x-100)^2 + (y-100)^2))
+circle <- data.frame(x = 100*(1+cos(seq(0, 2*pi, length.out = 2500))),
+                     y = 100*(1+sin(seq(0, 2*pi, length.out = 2500))),
+                     group = rep(1,2500))
 
-ggplot(points)+
-  geom_point(aes(x,y,color=distance))+
+ggplot(points) +
+  geom_point(aes(x,y,color=distance)) +
   geom_path(data=circle,aes(x,y,group=group))
 ```
 
@@ -51,7 +51,7 @@ All this data has is a set of x and y coordinates, along with the euclidean dist
 ggvoronoi can use this set of points to quickly plot a Voronoi diagram, working with the ggplot2 framework:
 
 ```{r 1b}
-ggplot(points)+
+ggplot(points) +
   geom_voronoi(aes(x,y,fill=distance))
 ```
 
@@ -59,8 +59,8 @@ Additionally, we can use the stat_voronoi function directly to specify which ggp
 This is most useful when we are interested in plotting only the borders of the diagram:
 
 ```{r 1c}
-ggplot(points,aes(x,y))+
-  stat_voronoi(geom="path")+
+ggplot(points,aes(x,y)) +
+  stat_voronoi(geom="path") +
   geom_point()
 ```
 
@@ -84,11 +84,11 @@ ggplot(data=points, aes(x=x, y=y, fill=distance)) +
 Finally, you can add whatever you want with your knowledge of ggplot2!
 
 ```{r 1e}
-ggplot(points,aes(x,y))+
+ggplot(points,aes(x,y)) +
   geom_voronoi(aes(fill=distance),outline=circle,
-               color="#4dffb8",size=.125)+
-  scale_fill_gradient(low="#4dffb8",high="black",guide=F)+
-  theme_void()+
+               color="#4dffb8",size=.125) +
+  scale_fill_gradient(low="#4dffb8",high="black",guide=F) +
+  theme_void() +
   coord_fixed()
 ```
 
@@ -108,14 +108,14 @@ First we need to build a map of Oxford:
 ```{r 2a,message=F}
 library(ggmap)
 
-ox_map = get_map(location = c(-84.7398373,39.507306),zoom = 15)
-bounds = as.numeric(attr(ox_map,"bb"))
+ox_map <- get_map(location = c(-84.7398373,39.507306),zoom = 15)
+bounds <- as.numeric(attr(ox_map,"bb"))
 
-map=
-  ggmap(ox_map,base_layer = ggplot(data=oxford_bikes,aes(x,y)))+
+map <-
+  ggmap(ox_map,base_layer = ggplot(data=oxford_bikes,aes(x,y))) +
         xlim(-85,-84)+ylim(39,40)+
-        coord_map(ylim=bounds[c(1,3)],xlim=bounds[c(2,4)])+
-        theme_minimal()+
+        coord_map(ylim=bounds[c(1,3)],xlim=bounds[c(2,4)]) +
+        theme_minimal() +
         theme(axis.text=element_blank(),
               axis.title=element_blank())
 ```
@@ -123,7 +123,7 @@ map=
 Now that we have the base layer, we just need to add the diagram.
 
 ```{r 2b}
-map + geom_path(stat="voronoi",alpha=.085,size=.25)+
+map + geom_path(stat="voronoi",alpha=.085,size=.25) +
       geom_point(color="blue",size=.25)
 ```
 
@@ -133,13 +133,14 @@ But what if we want to utilize this, not just look at it?
 
 Usng voronoi_polygon, we can build a Voronoi diagram as a SpatialPolygonsDataFrame.
 The voronoi_polygon function takes in:
+
 - data: a data frame (will need at least 2 numeric columns)
 - x: dataframe column name or index for the x variable
 - y: dataframe column name or index for the y variable
 - outline: a data.frame or SpatialPolygonsDataFrame with a map outline
 
 ```{r 2c}
-ox_diagram = voronoi_polygon(oxford_bikes,x="x",y="y")
+ox_diagram <- voronoi_polygon(oxford_bikes,x="x",y="y")
 ```
 
 This function is valuable in 2 cases: when there is spatial analysis to perform and when you are making a diagram of a large set of points.
@@ -152,8 +153,8 @@ Create a point with Mac & Joes' location:
 
 ```{r 2d}
 library(sp)
-mac_joes = SpatialPointsDataFrame(cbind(long=-84.7418,lat=39.5101),
-                                  data=data.frame(name="Mac & Joes"))
+mac_joes <- SpatialPointsDataFrame(cbind(long=-84.7418,lat=39.5101),
+                                   data=data.frame(name="Mac & Joes"))
 ```
 
 Then, overlay the point on our Voronoi diagram,
@@ -173,10 +174,10 @@ Plot the rest of the racks for visual comparison.
 Lastly, find the closest bike rack and drop a blue point.
 
 ```{r 2f,message=FALSE}
-map + geom_path(data=fortify_voronoi(ox_diagram),aes(x,y,group=group),alpha=.1,size=1)+
-      coord_map(xlim=c(-84.746,-84.739),ylim=c(39.508,39.514))+
-      geom_point(data=data.frame(mac_joes),aes(long,lat),color="red",size=2)+
-      geom_point(size=1.5,stroke=1, shape=21,color="black",fill="white")+
+map + geom_path(data=fortify_voronoi(ox_diagram),aes(x,y,group=group),alpha=.1,size=1) +
+      coord_map(xlim=c(-84.746,-84.739),ylim=c(39.508,39.514)) +
+      geom_point(data=data.frame(mac_joes),aes(long,lat),color="red",size=2) +
+      geom_point(size=1.5,stroke=1, shape=21,color="black",fill="white") +
       geom_point(data=mac_joes %over% ox_diagram,aes(x,y),color="blue",size=2)
 ```
 
@@ -193,28 +194,28 @@ First, subset out the data and outline.
 ```{r 3a,message=FALSE}
 library(dplyr)
 
-california = map_data("state") %>% filter(region == "california")
-ncdc.cali = ncdc_locations %>% filter(state=="CA")
+california <- map_data("state") %>% filter(region == "california")
+ncdc.cali <- ncdc_locations %>% filter(state=="CA")
 ```
 
 Next, lets plot the data we just gathered. We'll create a base layer, containing just the theme and design information we'll need. Then, we'll add some points and the California border to the plot.
 
 ```{r 3a2}
-cali_map =
-  ggplot(data=ncdc.cali,aes(x=long,y=lat))+
+cali_map <-
+  ggplot(data=ncdc.cali,aes(x=long,y=lat)) +
       scale_fill_gradientn("Elevation", 
           colors=c("seagreen","darkgreen","green1","yellow","gold4", "sienna"),
-          values=scales::rescale(c(-60,0,1000,2000,3000,4000)))+ 
+          values=scales::rescale(c(-60,0,1000,2000,3000,4000))) + 
       scale_color_gradientn("Elevation", 
           colors=c("seagreen","darkgreen","green1","yellow","gold4", "sienna"),
-          values=scales::rescale(c(-60,0,1000,2000,3000,4000)))+ 
+          values=scales::rescale(c(-60,0,1000,2000,3000,4000))) + 
       coord_quickmap() + 
-      theme_minimal()+
+      theme_minimal() +
       theme(axis.text=element_blank(),
             axis.title=element_blank())
 
-cali_map+
-      geom_point(aes(color=elev),size=.01)+
+cali_map +
+      geom_point(aes(color=elev),size=.01) +
       geom_path(data=california,aes(long,lat,group=group),color="black")
 ```  
 
@@ -223,7 +224,7 @@ Luckily, ggvoronoi will let us smooth out these points without using a raster.
 Now, we're ready to create the heatmap!
 
 ```{r 3b}
-cali_map+
+cali_map +
   geom_voronoi(aes(fill=elev),outline=california)
 ```
 
@@ -232,13 +233,13 @@ Here we can see everything from Death Valley (dark green) to Mount Whitney, the 
 In the second example, we used the voronoi_polygon function for spatial analysis. But, we'll repeat this third example using voronoi_polygon to demonstrate how to build a heatpmap using geom_polygon. This is useful when we have many points, as you only want to calculate the Voronoi regions once instead of each time you create a plot.
 
 ```{r 3c}
-california = map_data("state") %>% filter(region == "california")
+california <- map_data("state") %>% filter(region == "california")
 
-ncdc.cali = ncdc_locations %>% filter(state=="CA")
+ncdc.cali <- ncdc_locations %>% filter(state=="CA")
 
-cali.voronoi = voronoi_polygon(data=ncdc.cali,
-                               x="long",y="lat",
-                               outline=california)
+cali.voronoi <- voronoi_polygon(data=ncdc.cali,
+                                x="long",y="lat",
+                                outline=california)
 ```
 
 Perform spatial analysis here, if necessary.
@@ -246,11 +247,11 @@ Perform spatial analysis here, if necessary.
 Once you are done with analysis and ready to plot, use fortify_voronoi.
 
 ```{r 3d}
-cali.voronoi = fortify_voronoi(cali.voronoi)
+cali.voronoi <- fortify_voronoi(cali.voronoi)
 
-ggplot(cali.voronoi)+
+ggplot(cali.voronoi) +
   geom_polygon(aes(x=long.x, y=lat.x ,fill=elev,
-                   group=group, color=elev), size=0)+ 
+                   group=group, color=elev), size=0) + 
   scale_fill_gradientn("Elevation", 
                        colors=c("seagreen","darkgreen","green1",
                                 "yellow","gold4", "sienna"), 
@@ -260,7 +261,8 @@ ggplot(cali.voronoi)+
                                  "yellow","gold4", "sienna"), 
                         values=scales::rescale(c(-60,0,1000,2000,3000,4000))) + 
   coord_quickmap() + 
-  theme_minimal()+
+  theme_minimal() +
   theme(axis.text=element_blank(),
         axis.title=element_blank())
 ```
+
