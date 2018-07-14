@@ -1,12 +1,12 @@
 Package: ggvoronoi
 Version: 0.8.0
-Date: 2018-07-11
+Date: 2018-07-14
 Title: Voronoi Diagrams and Heatmaps with 'ggplot2'
-Author: Robert Garrett [aut, cre], 
+Author: Robert C. Garrett [aut, cre], 
         Austin Nar [aut],
 		Thomas J. Fisher [aut]
-Maintainer: Robert Garrett <garretrc@miamioh.edu>
-Authors@R: c(person("Robert", "Garrett", email = "garretrc@miamioh.edu", role = c("aut", "cre")),
+Maintainer: Robert C. Garrett <garretrc@miamioh.edu>
+Authors@R: c(person("Robert C.", "Garrett", email = "garretrc@miamioh.edu", role = c("aut", "cre")),
            person("Austin", "Nar", email = "narar@miamioh.edu", role = c("aut")),
            person("Thomas J.", "Fisher", email = "fishert4@miamioh.edu", role = c("aut")))
 Description: Easy creation and manipulation of Voronoi diagrams using 'deldir' with visualization in 'ggplot2'.
