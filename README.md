@@ -38,4 +38,10 @@ ggplot(points)+
 #the fix:
 ggplot(points)+
   geom_voronoi(aes(x,y,fill=fill,group=NA),color="black")
+  
+#alternatively, this still works as intended when doing each step manually:
+vor_points = fortify_voronoi(voronoi_polygon(points))
+
+ggplot(vor_points)+
+  geom_polygon(aes(x,y,fill=fill,group=group),color="black")
 ```
