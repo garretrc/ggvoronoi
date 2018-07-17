@@ -20,7 +20,7 @@ For questions about usage/syntax or for reporting bugs, email Robert Garrett at 
 
 ## Known Issues
 
-When using a discrete value for fill, the polygons have undesired behavior. The fix here is to add group=NA to the aesthetic mapping:
+When using a factor/character value for fill, the polygons have undesired behavior. The fix here is to add group=NA to the aesthetic mapping:
 
 ```r
 library(ggvoronoi)
