@@ -18,30 +18,6 @@ vignette("ggvoronoi")
 
 For questions about usage/syntax or for reporting bugs, email Robert Garrett at garretrc@miamioh.edu or raise an issue on this repository. 
 
-## Known Issues
+## Changes
 
-When using a factor/character value for fill, the polygons have undesired behavior. The fix here is to add group=NA to the aesthetic mapping:
-
-```r
-library(ggvoronoi)
-
-points=data.frame(
-  x=runif(n = 100,0,8.5),
-  y=runif(n = 100,0,11),
-  fill=as.factor(rep(1:2,50))
-)
-
-#erratic polygons
-ggplot(points)+
-  geom_voronoi(aes(x,y,fill=fill),color="black")
-
-#the fix:
-ggplot(points)+
-  geom_voronoi(aes(x,y,fill=fill,group=NA),color="black")
-  
-#alternatively, this still works as intended when doing each step manually:
-vor_points = fortify_voronoi(voronoi_polygon(points))
-
-ggplot(vor_points)+
-  geom_polygon(aes(x,y,fill=fill,group=group),color="black")
-```
+Version 0.8.1: Fixed bug when using a discrete value for fill mapping. Removed google maps API call in the vignette.
