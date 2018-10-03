@@ -28,3 +28,11 @@
 #' }
 #' @source https://www.ncdc.noaa.gov/data-access/land-based-station-data
 "ncdc_locations"
+
+#' Google Map of Oxford, Ohio.
+#'
+#' A ggmap object containing a static google map image of Oxford, Ohio. Zoomed in to show the Uptown Oxford and Miami University campus areas.
+#'
+#' @format Large ggmap object
+#' @source Google Maps static map api (accessed from 'ggmap' package)
+"oxford_map"

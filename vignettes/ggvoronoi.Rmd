@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(ggmap)
 ```
 
 
@@ -103,16 +104,21 @@ but with high sample size or a small area on the globe ggvoronoi still produces 
 Our goal here is to use a Voronoi diagram to locate the closest bike rack to points of interest in Oxford, OH.
 Being the hometown of Miami University, there is a lot of bike traffic in Oxford.
 
-First we need to build a map of Oxford:
+First we need to download a map of Oxford:
 
-```{r 2a,message=F}
+```{r 2a,message=F,eval=F}
 library(ggmap)
 
-ox_map <- get_map(location = c(-84.7398373,39.507306),zoom = 15)
-bounds <- as.numeric(attr(ox_map,"bb"))
+oxford_map <- get_googlemap(location = c(-84.7398373,39.507306),zoom = 15,key="your_api_key")
+```
+
+Using this ggmap object we can make a map of Oxford in ggplot2. 
+
+```{r 2b,message=F}
+bounds <- as.numeric(attr(oxford_map,"bb"))
 
 map <-
-  ggmap(ox_map,base_layer = ggplot(data=oxford_bikes,aes(x,y))) +
+  ggmap(oxford_map,base_layer = ggplot(data=oxford_bikes,aes(x,y))) +
         xlim(-85,-84)+ylim(39,40)+
         coord_map(ylim=bounds[c(1,3)],xlim=bounds[c(2,4)]) +
         theme_minimal() +
@@ -122,7 +128,7 @@ map <-
 
 Now that we have the base layer, we just need to add the diagram.
 
-```{r 2b}
+```{r 2c}
 map + geom_path(stat="voronoi",alpha=.085,size=.25) +
       geom_point(color="blue",size=.25)
 ```
@@ -139,7 +145,7 @@ The voronoi_polygon function takes in:
 - y: dataframe column name or index for the y variable
 - outline: a data.frame or SpatialPolygonsDataFrame with a map outline
 
-```{r 2c}
+```{r 2d}
 ox_diagram <- voronoi_polygon(oxford_bikes,x="x",y="y")
 ```
 
@@ -151,7 +157,7 @@ So, lets use the diagram!
 
 Create a point with Mac & Joes' location:
 
-```{r 2d}
+```{r 2e}
 library(sp)
 mac_joes <- SpatialPointsDataFrame(cbind(long=-84.7418,lat=39.5101),
                                    data=data.frame(name="Mac & Joes"))
@@ -159,7 +165,7 @@ mac_joes <- SpatialPointsDataFrame(cbind(long=-84.7418,lat=39.5101),
 
 Then, overlay the point on our Voronoi diagram,
 
-```{r 2e}
+```{r 2f}
 mac_joes %over% ox_diagram
 ```
 
@@ -173,7 +179,7 @@ Then, plot Mac & Joes with a red point.
 Plot the rest of the racks for visual comparison.
 Lastly, find the closest bike rack and drop a blue point.
 
-```{r 2f,message=FALSE}
+```{r 2g,message=FALSE}
 map + geom_path(data=fortify_voronoi(ox_diagram),aes(x,y,group=group),alpha=.1,size=1) +
       coord_map(xlim=c(-84.746,-84.739),ylim=c(39.508,39.514)) +
       geom_point(data=data.frame(mac_joes),aes(long,lat),color="red",size=2) +
@@ -187,7 +193,7 @@ using the bike rack across High Street than the one on South Poplar.
 
 ## Example 3: Altitude of California
 
-Here, we will be demonstrating the heatmap capabilites of ggvoronoi. California has one of the most varied geograhpies of any US state. So, we'll use ggvoronoi to create a heatmap of the altitude of California!
+Here, we will be demonstrating the heatmap capabilites of ggvoronoi. California has one of the most varied geographies of any US state. So, we'll use ggvoronoi to create a heatmap of the altitude of California!
 
 First, subset out the data and outline.
 

@@ -36,7 +36,11 @@ stat_voronoi <-
            inherit.aes = TRUE,
            outline = NULL,
            ...) {
-    mapping$group=NA
+    if(is.null(mapping)){
+        mapping = aes(group=NA)
+    }else{
+        mapping$group=NA
+    }
     layer(
       stat = StatVoronoi,
       data = data,
