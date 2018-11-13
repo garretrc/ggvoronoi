@@ -1,6 +1,6 @@
 Package: ggvoronoi
-Version: 0.8.1
-Date: 2018-10-04
+Version: 0.8.2
+Date: 2018-11-13
 Title: Voronoi Diagrams and Heatmaps with 'ggplot2'
 Author: Robert C. Garrett [aut, cre], 
         Austin Nar [aut],
