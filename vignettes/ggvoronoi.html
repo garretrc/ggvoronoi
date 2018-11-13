@@ -12,7 +12,7 @@
 
 <meta name="author" content="Robert Garrett and Thomas Fisher" />
 
-<meta name="date" content="2018-10-03" />
+<meta name="date" content="2018-11-12" />
 
 <title>Voronoi Diagrams with ggvoronoi</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Voronoi Diagrams with ggvoronoi</h1>
 <h4 class="author"><em>Robert Garrett and Thomas Fisher</em></h4>
-<h4 class="date"><em>2018-10-03</em></h4>
+<h4 class="date"><em>2018-11-12</em></h4>
 
 
 
@@ -132,10 +132,10 @@ circle &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cl
 <h2>Example 2: Spatial Analysis with Oxford Bike Racks</h2>
 <p>For this example, we’ll be using the locations of each bike rack in Oxford, Ohio. Note that ggvoronoi is limited to the 2d euclidean distance calculations from the deldir package at the moment. As such, using longitude and latitude will result in approximate Voronoi regions, but with high sample size or a small area on the globe ggvoronoi still produces a useful (and near-exact) result!</p>
 <p>Our goal here is to use a Voronoi diagram to locate the closest bike rack to points of interest in Oxford, OH. Being the hometown of Miami University, there is a lot of bike traffic in Oxford.</p>
-<p>First we need to download a map of Oxford:</p>
+<p>First we need to download a map of Oxford, using the ‘ggmap’ package. Note to download this yourself, you will need to supply your a Google Maps API key. For convenience, the ‘oxford_map’ object has been saved as a data file in the package, so feel free to skip this step and move to the next block of code!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
 
-oxford_map &lt;-<span class="st"> </span><span class="kw">get_googlemap</span>(<span class="dt">location =</span> <span class="kw">c</span>(-<span class="fl">84.7398373</span>,<span class="fl">39.507306</span>),<span class="dt">zoom =</span> <span class="dv">15</span>,<span class="dt">key=</span><span class="st">&quot;your_api_key&quot;</span>)</code></pre></div>
+oxford_map &lt;-<span class="st"> </span><span class="kw">get_googlemap</span>(<span class="dt">center =</span> <span class="kw">c</span>(-<span class="fl">84.7398373</span>,<span class="fl">39.507306</span>),<span class="dt">zoom =</span> <span class="dv">15</span>,<span class="dt">key=</span><span class="st">&quot;your_api_key&quot;</span>)</code></pre></div>
 <p>Using this ggmap object we can make a map of Oxford in ggplot2.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bounds &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">attr</span>(oxford_map,<span class="st">&quot;bb&quot;</span>))
 

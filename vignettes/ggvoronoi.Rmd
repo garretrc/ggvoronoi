@@ -104,12 +104,12 @@ but with high sample size or a small area on the globe ggvoronoi still produces 
 Our goal here is to use a Voronoi diagram to locate the closest bike rack to points of interest in Oxford, OH.
 Being the hometown of Miami University, there is a lot of bike traffic in Oxford.
 
-First we need to download a map of Oxford:
+First we need to download a map of Oxford, using the 'ggmap' package. Note to download this yourself, you will need to supply your a Google Maps API key. For convenience, the 'oxford_map' object has been saved as a data file in the package, so feel free to skip this step and move to the next block of code!
 
 ```{r 2a,message=F,eval=F}
 library(ggmap)
 
-oxford_map <- get_googlemap(location = c(-84.7398373,39.507306),zoom = 15,key="your_api_key")
+oxford_map <- get_googlemap(center = c(-84.7398373,39.507306),zoom = 15,key="your_api_key")
 ```
 
 Using this ggmap object we can make a map of Oxford in ggplot2. 
