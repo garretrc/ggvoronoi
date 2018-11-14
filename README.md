@@ -37,7 +37,7 @@ Alternatively, the vignette is available [here.](http://htmlpreview.github.io/?h
 
 For questions about usage/syntax or for reporting bugs, email Robert Garrett at garretrc@miamioh.edu or raise an issue on this repository. 
 
-To contribute to the package, follow the procedures outlines in CONTRIBUTING.md
+To contribute to the package, follow the procedures outlined in CONTRIBUTING.md
 
 ## Changes
 
