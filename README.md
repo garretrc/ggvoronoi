@@ -23,6 +23,12 @@ Or install the latest development version from this repository:
 devtools::install_github("garretrc/ggvoronoi",build_vignettes = TRUE)
 ```
 
+Finally, with either verison you can load the R package with the typical method:
+
+```r
+library(ggvoronoi)
+```
+
 ## Getting Started
 
 With the vignette, you can view some examples and create your first Voronoi diagram!
