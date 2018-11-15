@@ -1,7 +1,6 @@
 ## Test environments
 * local Windows 10 install, R 3.5.1
 * local Ubuntu 16.04 install, R 3.5.1
-* local OS X install, R 3.5.1
 * win-builder, R devel
 
 ## R CMD check results
