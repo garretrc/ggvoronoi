@@ -137,7 +137,7 @@ Here we can see each bike rack along with the Voronoi region surrounding it.
 So, given a bike rack, the region surrounding it is the area in Oxford for which that is the closest bike rack. 
 But what if we want to utilize this, not just look at it?
 
-Usng voronoi_polygon, we can build a Voronoi diagram as a SpatialPolygonsDataFrame.
+Using voronoi_polygon, we can build a Voronoi diagram as a SpatialPolygonsDataFrame.
 The voronoi_polygon function takes in:
 
 - data: a data frame (will need at least 2 numeric columns)
@@ -151,7 +151,7 @@ ox_diagram <- voronoi_polygon(oxford_bikes,x="x",y="y")
 
 This function is valuable in 2 cases: when there is spatial analysis to perform and when you are making a diagram of a large set of points.
 
-Now, lets take a point of interest in Oxford, say Mac & Joes, a popular restuarant/bar.
+Now, lets take a point of interest in Oxford, say Mac & Joes, a popular restaurant/bar.
 Google Maps can give us directions there, but there is no place to chain up a bike.
 So, lets use the diagram!
 
@@ -193,7 +193,7 @@ using the bike rack across High Street than the one on South Poplar.
 
 ## Example 3: Altitude of California
 
-Here, we will be demonstrating the heatmap capabilites of ggvoronoi. California has one of the most varied geographies of any US state. So, we'll use ggvoronoi to create a heatmap of the altitude of California!
+Here, we will be demonstrating the heatmap capabilities of ggvoronoi. California has one of the most varied geographies of any US state. So, we'll use ggvoronoi to create a heatmap of the altitude of California!
 
 First, subset out the data and outline.
 
@@ -236,7 +236,7 @@ cali_map +
 
 Here we can see everything from Death Valley (dark green) to Mount Whitney, the highest point in the state (dark brown)!
 
-In the second example, we used the voronoi_polygon function for spatial analysis. But, we'll repeat this third example using voronoi_polygon to demonstrate how to build a heatpmap using geom_polygon. This is useful when we have many points, as you only want to calculate the Voronoi regions once instead of each time you create a plot.
+In the second example, we used the voronoi_polygon function for spatial analysis. But, we'll repeat this third example using voronoi_polygon to demonstrate how to build a heatmap using geom_polygon. This is useful when we have many points, as you only want to calculate the Voronoi regions once instead of each time you create a plot.
 
 ```{r 3c}
 california <- map_data("state") %>% filter(region == "california")
