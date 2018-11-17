@@ -23,7 +23,7 @@ tags:
 - deldir
 affiliations:
 - index: 1
-  name: Miami University
+  name: Miami University, Department of Statistics
 ---
 
 # Summary
