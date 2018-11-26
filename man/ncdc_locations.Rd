@@ -14,7 +14,7 @@
   \item{elev}{site elevation in meters}
 }}
 \source{
-https://www.ncdc.noaa.gov/data-access/land-based-station-data
+\href{https://www.ncdc.noaa.gov/data-access/land-based-station-data}{National Climatic Data Center}
 }
 \usage{
 ncdc_locations

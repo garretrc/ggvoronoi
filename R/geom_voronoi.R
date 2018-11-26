@@ -1,12 +1,12 @@
 #' Voronoi Diagrams with ggplot2
 #'
-#' Convenience function for use with stat_voronoi.
-#' Uses geom_polygon as the default geom and stat_voronoi as the default stat.
-#' To plot region borders instead of a choropleth map, use stat_voronoi() with geom="path",
-#' or use fill=NA with color="black".
+#' Convenience function for use with \code{\link[ggvoronoi]{stat_voronoi}}.
+#' Uses \code{\link[ggplot2]{geom_polygon}} as the default geom and \code{\link[ggvoronoi]{stat_voronoi}} as the default stat.
+#' To plot region borders instead of a choropleth map, use \code{\link[ggvoronoi]{stat_voronoi}} with \code{geom="path"},
+#' or use \code{fill=NA} with \code{color="black"}.
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
-#' @param outline data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.
+#' @param outline \code{data.frame} with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.
 #' @keywords voronoi, choropleth
 #' @import ggplot2 sp deldir rgeos raster
 #' @export

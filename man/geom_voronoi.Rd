@@ -53,13 +53,13 @@ rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
 
-\item{outline}{data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.}
+\item{outline}{\code{data.frame} with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.}
 }
 \description{
-Convenience function for use with stat_voronoi.
-Uses geom_polygon as the default geom and stat_voronoi as the default stat.
-To plot region borders instead of a choropleth map, use stat_voronoi() with geom="path",
-or use fill=NA with color="black".
+Convenience function for use with \code{\link[ggvoronoi]{stat_voronoi}}.
+Uses \code{\link[ggplot2]{geom_polygon}} as the default geom and \code{\link[ggvoronoi]{stat_voronoi}} as the default stat.
+To plot region borders instead of a choropleth map, use \code{\link[ggvoronoi]{stat_voronoi}} with \code{geom="path"},
+or use \code{fill=NA} with \code{color="black"}.
 }
 \examples{
 set.seed(45056)

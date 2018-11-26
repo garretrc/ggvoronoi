@@ -26,7 +26,7 @@
 #'   \item{long}{longitude coordinate}
 #'   \item{elev}{site elevation in meters}
 #' }
-#' @source https://www.ncdc.noaa.gov/data-access/land-based-station-data
+#' @source \href{https://www.ncdc.noaa.gov/data-access/land-based-station-data}{National Climatic Data Center}
 "ncdc_locations"
 
 #' Google Map of Oxford, Ohio.

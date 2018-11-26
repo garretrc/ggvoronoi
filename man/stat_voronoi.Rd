@@ -49,7 +49,7 @@ rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
 
-\item{outline}{data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.}
+\item{outline}{\code{data.frame} with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.}
 
 \item{...}{Other arguments passed on to \code{\link[=layer]{layer()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
@@ -57,7 +57,8 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 to the paired geom/stat.}
 }
 \description{
-Use geom="polygon" for choropleth heatmap or geom="path" for region borders.
+See \code{\link[ggvoronoi]{geom_voronoi}} for general use. 
+Use \code{geom="polygon"} for choropleth heatmap or \code{geom="path"} for region borders.
 }
 \examples{
 set.seed(45056)

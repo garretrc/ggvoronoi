@@ -1,9 +1,10 @@
 #' Voronoi Diagrams with ggplot2
 #'
-#' Use geom="polygon" for choropleth heatmap or geom="path" for region borders.
+#' See \code{\link[ggvoronoi]{geom_voronoi}} for general use. 
+#' Use \code{geom="polygon"} for choropleth heatmap or \code{geom="path"} for region borders.
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
-#' @param outline data.frame with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.
+#' @param outline \code{data.frame} with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.
 #' @keywords voronoi, choropleth
 #' @import ggplot2 sp deldir rgeos raster
 #' @export
