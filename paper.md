@@ -14,7 +14,9 @@ authors:
   name: Karsten Maurer
   orcid: 0000-0002-0812-0256
 date: "15 November 2018"
-output: pdf_document
+output:
+  html_document: default
+  pdf_document: default
 bibliography: paper.bib
 tags:
 - R
