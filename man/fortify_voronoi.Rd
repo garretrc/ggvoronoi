@@ -7,10 +7,11 @@
 fortify_voronoi(vor_spdf)
 }
 \arguments{
-\item{vor_spdf}{Output from voronoi_polygon (SpatialPolygonsDataFrame)}
+\item{vor_spdf}{Output from \code{\link[ggvoronoi]{voronoi_polygon}} (\code{\link[sp]{SpatialPolygonsDataFrame}})}
 }
 \description{
-Allows output of voronoi_polygon to be plotted using geom_polygon.
+Allows output of \code{\link[ggvoronoi]{voronoi_polygon}} to be plotted using
+\code{\link[ggplot2]{geom_polygon}}.
 }
 \examples{
 set.seed(45056)
