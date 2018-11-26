@@ -12,16 +12,16 @@ Have a good idea for ggvoronoi? Let's work together! First, please check out the
 ## Contributions
 
 Robert Garrett: Package maintainer, co-creator, and co-author
-* Author of fortify_voronoi
-* Author of unit tests
-* Co-author for base functionality of voronoi_polygon
-* Co-author for ggplot2 integration
+* Co-author of base functionality in `voronoi_polygon`
+* Co-author of 'ggplot2' integration
 * Co-author of vignette
 * Co-author of documentation
+* Author of `fortify_voronoi`
+* Author of unit tests
 
 Austin Nar: Co-creator and co-author
-* Co-author for base functionality of voronoi_polygon
-* Co-author for ggplot2 integration
+* Co-author of base functionality in `voronoi_polygon`
+* Co-author of 'ggplot2' integration
 
 Thomas Fisher: Co-author
 * Co-author of vignette
@@ -29,4 +29,4 @@ Thomas Fisher: Co-author
 
 Karsten Maurer: Contributor
 * Contributions to package ideation
-* Contributions to ggplot2 integration
+* Contributions to 'ggplot2' integration
