@@ -1,14 +1,18 @@
 #' Bike Rack Locations in Oxford, Ohio.
 #'
-#' A dataset with the location of bike racks in Oxford, Ohio. Includes Miami University's campus and Uptown Oxford.
-#'
+#' A dataset with the location of bike racks in Oxford, Ohio. Includes Miami University's campus and Uptown Oxford. 
+#' GPS coordinates were measured for each bike rack via handheld GPS receivers. 
+#' Off-campus data were gathered for a Miami University GIS class project and 
+#' On-campus data were gathered for a Miami University Kinesiology research project.
+#' 
 #' @format A data frame with 205 rows and 3 variables:
 #' \describe{
 #'   \item{x}{longitude coordinate}
 #'   \item{y}{latitude coordinate}
 #'   \item{name}{location name, if recorded}
 #' }
-#' @source Madeline Maurer, Justin Hopkins, Dr. Helaine Alessio, Amanda Meiering
+#' @source Madeline Maurer (Miami University Department of Geography); 
+#' Justin Hopkins, Dr. Helaine Alessio and Amanda Meiering (Miami University Department of Kinesiology)
 "oxford_bikes"
 
 #' Locations and Elevation of NCDC Weather Stations

@@ -11,12 +11,16 @@
   \item{name}{location name, if recorded}
 }}
 \source{
-Madeline Maurer, Justin Hopkins, Dr. Helaine Alessio, Amanda Meiering
+Madeline Maurer (Miami University Department of Geography); 
+Justin Hopkins, Dr. Helaine Alessio and Amanda Meiering (Miami University Department of Kinesiology)
 }
 \usage{
 oxford_bikes
 }
 \description{
-A dataset with the location of bike racks in Oxford, Ohio. Includes Miami University's campus and Uptown Oxford.
+A dataset with the location of bike racks in Oxford, Ohio. Includes Miami University's campus and Uptown Oxford. 
+GPS coordinates were measured for each bike rack via handheld GPS receivers. 
+Off-campus data were gathered for a Miami University GIS class project and 
+On-campus data were gathered for a Miami University Kinesiology research project.
 }
 \keyword{datasets}
