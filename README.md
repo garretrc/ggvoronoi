@@ -2,7 +2,7 @@
 
 ## Overview
 
-['ggvoronoi']( https://CRAN.R-project.org/package=ggvoronoi) is an R package that allows for easy creation and manipulation of Voronoi diagrams, which are tools for determining nearest neighbor regions for a given set of points. 
+['ggvoronoi']( https://CRAN.R-project.org/package=ggvoronoi) is an R package that allows for easy creation and manipulation of [Voronoi diagrams](https://en.wikipedia.org/wiki/Voronoi_diagram), which are tools for determining nearest neighbor regions for a given set of points. 
 Voronoi diagram regions are calculated using the R package ['deldir']( https://CRAN.R-project.org/package=deldir) by Rolf Turner. 
 The output from 'deldir' is converted to the spatial object format provided by the ['sp']( https://CRAN.R-project.org/package=sp) package from Edzer Pebesma and Roger Bivand.
 This allows for additional functionality beyond what is provided in ['deldir']( https://CRAN.R-project.org/package=deldir): diagrams can now be extended to heatmaps and users can now specify a bounding region for the diagram.
