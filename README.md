@@ -26,7 +26,7 @@ install.packages("ggvoronoi")
 Or install the latest development version from this repository:
 
 ```r
-devtools::install_github("garretrc/ggvoronoi",build_vignettes = TRUE)
+remotes::install_github("garretrc/ggvoronoi", dependencies = TRUE, build_opts = c("--no-resave-data"))
 ```
 
 Finally, with either verison you can load the R package with the typical method:
