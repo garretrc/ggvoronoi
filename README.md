@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/139491863.svg)](https://zenodo.org/badge/latestdoi/139491863)
+
 # ggvoronoi: Voronoi Diagrams and Heatmaps with 'ggplot2'
 
 ## Overview
