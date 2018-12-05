@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/139491863.svg)](https://zenodo.org/badge/latestdoi/139491863)
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.01096/status.svg)](https://doi.org/10.21105/joss.01096)
 
 # ggvoronoi: Voronoi Diagrams and Heatmaps with 'ggplot2'
 
