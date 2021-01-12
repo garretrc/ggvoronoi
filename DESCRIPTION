@@ -1,6 +1,6 @@
 Package: ggvoronoi
-Version: 0.8.2
-Date: 2018-11-15
+Version: 0.8.4
+Date: 2021-01-11
 Title: Voronoi Diagrams and Heatmaps with 'ggplot2'
 Author: Robert C. Garrett [aut, cre], 
         Austin Nar [aut],
@@ -17,8 +17,8 @@ Imports: deldir, sp, rgeos, raster, methods
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Suggests: knitr, rmarkdown, ggmap, dplyr, scales,
-    testthat, vdiffr
-VignetteBuilder: knitr
+    testthat, vdiffr, mapproj
+VignetteBuilder: knitr, ggmap, mapproj
 URL: https://github.com/garretrc/ggvoronoi/
