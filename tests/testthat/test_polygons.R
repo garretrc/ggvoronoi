@@ -5,18 +5,6 @@ library(ggvoronoi)
 #use subsets of included data files to perform testing
 test_data = list(ncdc_locations[1:10,c(5,4,6)],oxford_bikes[1:5,])
 
-#Helper functions to ensure conditional usage
-expect_identical <- function(object, expected, ...) {
-  testthat::skip_if_not_installed("vdiffr")
-  vdiffr::expect_identical(object, expected, ...)
-}
-
-expect_error <- function(oof, ...) {
-  testthat::skip_if_not_installed("vdiffr")
-  vdiffr::expect_error(oof, ...)
-}
-
-
 #Test: is the voronoi_polygon output in a SpatialPolygonsDataFrame?
 test_that("voronoi_polygon outputs a SpatialPolygonsDataFrame by default",{
   for(i in 1:length(test_data)){
