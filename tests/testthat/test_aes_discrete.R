@@ -30,9 +30,15 @@ plots[[5]] = ggplot(oxford_test,aes(x))+
 plots[[6]] = ggplot(oxford_test,aes(fill=name))+
   stat_voronoi(aes(x,y),color="black")
 
+#Helper to ensure conditional usage of vdiffr
+expect_doppelganger <- function(title, fig, path = NULL, ...) {
+  testthat::skip_if_not_installed("vdiffr")
+  vdiffr::expect_doppelganger(title, fig, path = path, ...)
+}
+
 #Finally, we test to see if all of these plots are the same
 test_that("Voronoi diagram heatmaps work correctly with discrete fill",{
   for(i in 1:length(plots)){
-    vdiffr::expect_doppelganger("Heatmap with Discrete Fill",plots[[i]],path="")
+    expect_doppelganger("Heatmap with Discrete Fill",plots[[i]],path="")
   }
 })

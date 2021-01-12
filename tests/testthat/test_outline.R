@@ -27,16 +27,21 @@ continuous = ggplot(ncdc_test)+
 discrete =   ggplot(ncdc_discrete)+
                geom_voronoi(aes(long,lat,fill=elev),outline=border)
 
+#Helper to ensure conditional usage of vdiffr
+expect_doppelganger <- function(title, fig, path = NULL, ...) {
+  testthat::skip_if_not_installed("vdiffr")
+  vdiffr::expect_doppelganger(title, fig, path = path, ...)
+}
 
 #Finally, we test to test if the plots look correct
 test_that("Voronoi diagram outlines work correctly with blank diagram",{
-  vdiffr::expect_doppelganger("Border with blank diagram",blank,path="")
+  expect_doppelganger("Border with blank diagram",blank,path="")
 })
 
 test_that("Voronoi diagram outlines work correctly with continuous fill",{
-  vdiffr::expect_doppelganger("Border with Continuous Fill",continuous,path="")
+  expect_doppelganger("Border with Continuous Fill",continuous,path="")
 })
 
 test_that("Voronoi diagram outlines work correctly with discrete fill",{
-  vdiffr::expect_doppelganger("Border with Discrete Fill",discrete,path="")
+  expect_doppelganger("Border with Discrete Fill",discrete,path="")
 })

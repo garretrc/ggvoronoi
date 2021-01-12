@@ -30,10 +30,16 @@ plots[[5]] = ggplot(ncdc_test,aes(long))+
 plots[[6]] = ggplot(ncdc_test,aes(fill=elev))+
                stat_voronoi(aes(long,lat))
 
+#Helper to ensure conditional usage of vdiffr
+expect_doppelganger <- function(title, fig, path = NULL, ...) {
+  testthat::skip_if_not_installed("vdiffr")
+  vdiffr::expect_doppelganger(title, fig, path = path, ...)
+}
+
 #Finally, we test to see if all of these plots are the same
 test_that("Voronoi diagram heatmaps work correctly with continuous fill",{
   for(i in 1:length(plots)){
-    vdiffr::expect_doppelganger("Heatmap with Continuous Fill",plots[[i]],path="")
+    expect_doppelganger("Heatmap with Continuous Fill",plots[[i]],path="")
   }
 })
   
