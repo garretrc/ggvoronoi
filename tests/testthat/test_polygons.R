@@ -8,12 +8,12 @@ test_data = list(ncdc_locations[1:10,c(5,4,6)],oxford_bikes[1:5,])
 #Helper functions to ensure conditional usage
 expect_identical <- function(object, expected, ...) {
   testthat::skip_if_not_installed("vdiffr")
-  expect_identical(object, expected, ...)
+  vdiffr::expect_identical(object, expected, ...)
 }
 
 expect_error <- function(oof, ...) {
   testthat::skip_if_not_installed("vdiffr")
-  expect_error(oof, ...)
+  vdiffr::expect_error(oof, ...)
 }
 
 
