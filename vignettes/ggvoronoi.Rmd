@@ -117,13 +117,14 @@ Using this ggmap object we can make a map of Oxford in ggplot2.
 ```{r 2b,message=F}
 bounds <- as.numeric(attr(oxford_map,"bb"))
 
-map <-
-  ggmap(oxford_map,base_layer = ggplot(data=oxford_bikes,aes(x,y))) +
-        xlim(-85,-84)+ylim(39,40)+
-        coord_map(ylim=bounds[c(1,3)],xlim=bounds[c(2,4)]) +
-        theme_minimal() +
-        theme(axis.text=element_blank(),
-              axis.title=element_blank())
+map <- ggplot(data=oxford_bikes,aes(x,y)) +
+         geom_blank() +
+         inset_ggmap(oxford_map) +
+         xlim(-85,-84)+ylim(39,40)+
+         coord_map(ylim=bounds[c(1,3)],xlim=bounds[c(2,4)]) +
+         theme_minimal() +
+         theme(axis.text=element_blank(),
+               axis.title=element_blank())
 ```
 
 Now that we have the base layer, we just need to add the diagram.
