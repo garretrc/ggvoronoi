@@ -55,6 +55,8 @@ To contribute to the package or see past contributions, see the [CONTRIBUTING.md
 
 ## Changes
 
+v0.8.5: Fixes thanks to Duncan Murdoch, resubmitting to CRAN
+
 v0.8.2: Added unit tests using ['testthat']( https://CRAN.R-project.org/package=testthat) and ['vdiffr']( https://CRAN.R-project.org/package=vdiffr). Minor improvements to vignette and README.md
 
 v0.8.1: Fixed bug when using a discrete value for fill mapping. Removed google maps API call in the vignette.
