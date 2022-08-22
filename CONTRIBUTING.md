@@ -30,3 +30,6 @@ Thomas Fisher: Co-author
 Karsten Maurer: Contributor
 * Contributions to package ideation
 * Contributions to ['ggplot2'](https://cran.r-project.org/package=ggplot2) integration
+
+Duncan Murdoch: Contributor
+* Fixes to CRAN check errors
