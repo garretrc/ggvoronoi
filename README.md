@@ -49,7 +49,7 @@ Alternatively, the vignette is available [here.](http://htmlpreview.github.io/?h
 
 ## Contact info
 
-For questions about usage/syntax or for reporting bugs, email Robert Garrett at garretrc@miamioh.edu or raise an issue on this repository. 
+For questions about usage/syntax or for reporting bugs, email Robert at rcg4@illinois.edu or raise an issue on this repository. 
 
 To contribute to the package or see past contributions, see the [CONTRIBUTING.md](CONTRIBUTING.md) file
 
