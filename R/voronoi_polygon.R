@@ -28,7 +28,7 @@
 
 voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FALSE)
 {
-  if(class(data) != "data.frame"){
+  if(!inherits(data, "data.frame")){
     stop('"data" must be of class data.frame.')
   }
   if(nrow(data)==0){
@@ -42,11 +42,16 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
   x = data[,x]
   y = data[,y]
   if(!is.null(outline)){
-    if(class(outline) != "data.frame" & class(outline) != "SpatialPolygonsDataFrame" & class(outline) != "SpatialPolygons"){
+    if(!inherits(outline, "data.frame") && !inherits(outline, "SpatialPolygonsDataFrame") && !inherits(outline, "SpatialPolygons")){
       outline = NULL
       warning("Outline must be of class data.frame or SpatialPolygonsDataFrame. No outline will be used.")
     }
-    else if(class(outline) == "data.frame"){
+    # Just in case one of these ever inherits from "data.frame",
+    # we put it first
+    else if(inherits(outline, "SpatialPolygonsDataFrame") || inherits(outline, "SpatialPolygons")){
+      outline_spdf = outline
+    }
+    else if(inherits(outline, "data.frame")){
       if(nrow(outline)==0){
         stop('"outline" must not be empty.')
       }
@@ -63,8 +68,6 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
       outline_spdf = SpatialPolygonsDataFrame(SpatialPolygons(outline_polygons),
                                               data = data.frame(group = unique(outline$group),
                                                                 row.names = unique(outline$group)))
-    }else if(class(outline) == "SpatialPolygonsDataFrame" | class(outline)=="SpatialPolygons"){
-      outline_spdf = outline
     }
   }
   if(!is.null(outline)){
