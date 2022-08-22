@@ -32,4 +32,5 @@ Karsten Maurer: Contributor
 * Contributions to ['ggplot2'](https://cran.r-project.org/package=ggplot2) integration
 
 Duncan Murdoch: Contributor
-* Fixes to CRAN check errors
+* Fixes in response to changes in new R versions
+* Fix for vignette (the bike racks are saved!)
