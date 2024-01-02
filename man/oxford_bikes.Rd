@@ -4,12 +4,14 @@
 \name{oxford_bikes}
 \alias{oxford_bikes}
 \title{Bike Rack Locations in Oxford, Ohio.}
-\format{A data frame with 205 rows and 3 variables:
+\format{
+A data frame with 205 rows and 3 variables:
 \describe{
   \item{x}{longitude coordinate}
   \item{y}{latitude coordinate}
   \item{name}{location name, if recorded}
-}}
+}
+}
 \source{
 Madeline Maurer (Miami University Department of Geography); 
 Justin Hopkins, Dr. Helaine Alessio and Amanda Meiering (Miami University Department of Kinesiology)

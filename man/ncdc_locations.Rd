@@ -4,7 +4,8 @@
 \name{ncdc_locations}
 \alias{ncdc_locations}
 \title{Locations and Elevation of NCDC Weather Stations}
-\format{A data frame with 65804 rows and 6 variables:
+\format{
+A data frame with 65804 rows and 6 variables:
 \describe{
   \item{ID}{ID number to connect the data back to other NCDC data}
   \item{country}{country that the site is in. USA, Canada or Mexico}
@@ -12,9 +13,10 @@
   \item{lat}{latitude coordinate}
   \item{long}{longitude coordinate}
   \item{elev}{site elevation in meters}
-}}
+}
+}
 \source{
-\href{https://www.ncdc.noaa.gov/data-access/land-based-station-data}{National Climatic Data Center}
+\href{https://www.ncei.noaa.gov/products/land-based-station}{National Climatic Data Center}
 }
 \usage{
 ncdc_locations

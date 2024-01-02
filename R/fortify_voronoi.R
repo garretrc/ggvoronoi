@@ -3,7 +3,6 @@
 #' Allows output of \code{\link[ggvoronoi]{voronoi_polygon}} to be plotted using
 #' \code{\link[ggplot2]{geom_polygon}}.
 #' @param vor_spdf Output from \code{\link[ggvoronoi]{voronoi_polygon}} (\code{\link[sp]{SpatialPolygonsDataFrame}})
-#' @keywords voronoi, choropleth
 #' @import ggplot2
 #' @export
 #' @examples
