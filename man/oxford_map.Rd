@@ -4,7 +4,9 @@
 \name{oxford_map}
 \alias{oxford_map}
 \title{Google Map of Oxford, Ohio.}
-\format{Large ggmap object}
+\format{
+Large ggmap object
+}
 \source{
 Google Maps static map api (accessed from 'ggmap' package)
 }

@@ -6,9 +6,8 @@
 #' @param y numeric vector (for example latitude).
 #' @param outline \code{data.frame} with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.
 #' @param data.frame output as \code{data.frame}? You will lose information if you do this. For use in \code{\link[ggvoronoi]{StatVoronoi}}.
-#' @keywords voronoi, choropleth
-#' @import ggplot2 sp deldir rgeos raster
-#' @importFrom methods slot
+#' @import ggplot2 sp deldir raster terra
+#' @importFrom methods slot as
 #' @export
 #' @examples
 #' set.seed(45056)
@@ -92,7 +91,13 @@ voronoi_polygon = function(data, x = 'x', y = 'y', outline = NULL, data.frame=FA
   vor_spdf = SpatialPolygonsDataFrame(SpatialPolygons(vor_polygons),
                                       data = pts@data)
   if(!is.null(outline)){
-    vor_spdf = rgeos::intersect(gBuffer(vor_spdf, byid=TRUE, width=0), gBuffer(outline_spdf, byid=TRUE, width=0))
+    SV_vor_spdf <- as(vor_spdf, "SpatVector")
+    SV_outline_spdf <- as(outline_spdf, "SpatVector")
+#    vor_spdf = rgeos::intersect(gBuffer(vor_spdf, byid=TRUE, width=0), gBuffer(outline_spdf, byid=TRUE, width=0))
+    SV_vor_spdf_intersect <- terra::intersect(
+      terra::buffer(SV_vor_spdf, width=0), 
+      terra::buffer(SV_outline_spdf, width=0))
+    vor_spdf <- as(SV_vor_spdf_intersect, "Spatial")
   }
 
   if(data.frame==FALSE){

@@ -4,8 +4,7 @@
 \alias{voronoi_polygon}
 \title{Voronoi Diagram from Data Frame}
 \usage{
-voronoi_polygon(data, x = "x", y = "y", outline = NULL,
-  data.frame = FALSE)
+voronoi_polygon(data, x = "x", y = "y", outline = NULL, data.frame = FALSE)
 }
 \arguments{
 \item{data}{\code{data.frame} containing a set of points to make voronoi regions and any additional desired columns.}
@@ -37,5 +36,3 @@ vor_df <- fortify_voronoi(vor_spdf)
 ggplot(vor_df) +
     geom_polygon(aes(x=x,y=y,fill=distance,group=group))
 }
-\keyword{choropleth}
-\keyword{voronoi,}

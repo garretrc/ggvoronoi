@@ -7,8 +7,7 @@
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
 #' @param outline \code{data.frame} with first column x/longitude, second column y/latitude, and a group column denoting islands or pieces.
-#' @keywords voronoi, choropleth
-#' @import ggplot2 sp deldir rgeos raster
+#' @import ggplot2 sp deldir raster terra
 #' @export
 #' @examples
 #' set.seed(45056)
